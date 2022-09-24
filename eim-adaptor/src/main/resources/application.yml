@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "test-spark-submit"
+  datasource:
+    dynamic:
+      primary: pg_postgres
+      datasource:
+        pg_test02:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://172.100.0.100:55432/test02
+          username: postgres
+          password: rootroot
+        pg_postgres:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://172.100.0.100:55432/postgres
+          username: postgres
+          password: rootroot
+      druid:
+        max-active: 30
+        min-idle: 2
+        initial-size: 2
+logging:
+  level:
+    root: info
+hive:
+  table:
+    location: "hdfs://study:9000"
+#    ddl-file-path: "/home/zhouyahui/scripts/ddl/d"
+    ddl-file-path: "C:/Users/yahui/Desktop/sql/d"
+

@@ -1,0 +1,9 @@
+/.idea/
+/eim-adaptor/.gitignore
+/eim-adaptor/eim-adaptor.iml
+/eim-adaptor/HELP.md
+/eim-adaptor/mvnw
+/eim-adaptor/mvnw.cmd
+/eim-adaptor/README.md
+/eim-adaptor/.mvn/
+/eim-spark-job/eim-spark-job.iml
