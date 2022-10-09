@@ -397,12 +397,10 @@ public class HiveTableDdlServiceImpl implements IHiveTableDdlService {
 
     private String generateLdgPkTableDdl(String fileName) {
 
-
         BdmpFileDetails bdmpFileDetails = getBdmpFileDetails(fileName);
-
-        List<BdmpFileFieldDetails> bdmpFileFieldDetailsList
-                = getBdmpFileFieldDetailsList(bdmpFileDetails.getBifId());
-
+        if ("N".equals(bdmpFileDetails.getIfPhysicalDeletion())) {
+            return "";
+        }
 
         //获取ldg层 库表
         String ldgTableName = getHiveTableName("ldgPk", bdmpFileDetails.getDdlName());
@@ -440,7 +438,9 @@ public class HiveTableDdlServiceImpl implements IHiveTableDdlService {
 
 
         BdmpFileDetails bdmpFileDetails = getBdmpFileDetails(fileName);
-
+        if ("N".equals(bdmpFileDetails.getIfPhysicalDeletion())) {
+            return "";
+        }
         //获取ldg层 库表
         String ldgTableName = getHiveTableName("stgPk", bdmpFileDetails.getDdlName());
 
@@ -465,7 +465,9 @@ public class HiveTableDdlServiceImpl implements IHiveTableDdlService {
 
 
         BdmpFileDetails bdmpFileDetails = getBdmpFileDetails(fileName);
-
+        if ("N".equals(bdmpFileDetails.getIfPhysicalDeletion())) {
+            return "";
+        }
         //获取ldg层 库表
         String ldgTableName = getHiveTableName("rejPk", bdmpFileDetails.getDdlName());
 

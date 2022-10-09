@@ -21,11 +21,11 @@ object test01 extends Logging {
       .builder()
       .getOrCreate()
 
-    val domain = JSON.parseObject(args(1), classOf[testDomain])
-
-    logError(domain.toString)
-    logError(args.mkString(","))
-    logError(args(1))
+//    val domain = JSON.parseObject(args(1), classOf[testDomain])
+//
+//    logError(domain.toString)
+//    logError(args.mkString(","))
+//    logError(args(1))
     val slices = if (args.length > 0) args(0).toInt else 200
     val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow
     val count = spark.sparkContext.parallelize(1 until n, slices).map { i =>
@@ -33,7 +33,12 @@ object test01 extends Logging {
       val y = random * 2 - 1
       if (x * x + y * y <= 1) 1 else 0
     }.reduce(_ + _)
-    println(s"Pi is roughly ${4.0 * count / (n - 1)}")
+    logInfo(s"Pi is roughly ${4.0 * count / (n - 1)}")
+    logWarning("~~~~~~1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    logError("~~~~~~~~2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     spark.stop()
+
+
+
   }
 }
